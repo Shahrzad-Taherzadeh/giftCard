@@ -10,6 +10,26 @@ The workflow is illustrated in the flow diagram below.
 ![Gift Card Flow](./giftCard.png)
 
 ---
+## Gift Card Flow (Sequence)
+
+### Workflow Steps:
+
+1. **User**  
+   - Enters phone number and gift code and sends the request to Gift Service.
+
+2. **Gift Service – Validation & Decision**  
+   - Checks if the gift code is valid and not expired.  
+   - If valid: registers the user as a winner and sends `addCredit` request to Wallet Service.  
+   - If not valid: returns an error to the user.
+
+3. **Wallet Service – Execution**  
+   - Adds credit to the user’s wallet and records the transaction.  
+   - Returns the result back to Gift Service.
+
+4. **Gift Service – Response**  
+   - Sends the final response to the user: either an error or the updated wallet balance.
+   
+---
 
 ## 1️⃣ GiftCodeService
 
